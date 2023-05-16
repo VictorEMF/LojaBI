@@ -1,0 +1,39 @@
+BEGIN;
+MERGE INTO public.dm_loja dl
+USING
+	(
+		SELECT DISTINCT 
+					ID_LOJA,
+					DATA_ABERTURA
+		from dblink('host=localhost user=postgres password=postgres dbname=lojabi',
+		$$
+			SELECT 	
+					ID_LOJA,
+					DATA_ABERTURA
+		FROM loja
+		$$) AS loja
+					(ID_LOJA INT,
+					DATA_ABERTURA TIMESTAMP)
+		ORDER BY 1
+	) MERGE_SUBQUERY
+ON (
+		dl.NK_ID_LOJA = MERGE_SUBQUERY.ID_LOJA
+	)
+WHEN NOT MATCHED THEN 
+
+INSERT 
+		(
+			NK_ID_LOJA,
+			DATA_ABERTURA
+		)
+VALUES 
+		(
+			MERGE_SUBQUERY.ID_LOJA,
+			MERGE_SUBQUERY.DATA_ABERTURA
+		)
+WHEN MATCHED THEN 
+
+UPDATE SET 
+			NK_ID_LOJA 			=	MERGE_SUBQUERY.ID_LOJA,
+			DATA_ABERTURA		=	MERGE_SUBQUERY.DATA_ABERTURA;
+commit;
