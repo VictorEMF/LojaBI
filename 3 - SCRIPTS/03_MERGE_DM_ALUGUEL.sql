@@ -1,0 +1,47 @@
+BEGIN;
+MERGE INTO public.dm_aluguel da 
+USING
+	(
+		SELECT DISTINCT 
+					ID_ALUGUEL,
+					ID_LOJA,
+					VALOR_ALUGUEL	
+		from dblink('host=localhost user=postgres password=postgres dbname=lojabi',
+		$$
+			SELECT 	
+					ID_ALUGUEL, 
+					ID_LOJA, 
+					VALOR_ALUGUEL
+		FROM aluguel
+		$$) AS aluguel
+					(ID_ALUGUEL INT,
+					ID_LOJA INT,
+					VALOR_ALUGUEL numeric(10,2))
+		ORDER BY 1
+	) MERGE_SUBQUERY
+ON (
+		DA.NK_ID_ALUGUEL = MERGE_SUBQUERY.ID_ALUGUEL
+	)
+WHEN NOT MATCHED THEN 
+
+INSERT 
+		(
+			SK_ID_LOJA,
+			NK_ID_ALUGUEL,
+			VALOR_ALUGUEL
+		)
+VALUES 
+		(
+			MERGE_SUBQUERY.ID_LOJA,
+			MERGE_SUBQUERY.ID_ALUGUEL,
+			MERGE_SUBQUERY.VALOR_ALUGUEL
+		)
+WHEN MATCHED THEN 
+
+UPDATE SET 
+			SK_ID_LOJA 			=	MERGE_SUBQUERY.ID_LOJA,
+			NK_ID_ALUGUEL		=	MERGE_SUBQUERY.ID_ALUGUEL,
+			VALOR_ALUGUEL		=	MERGE_SUBQUERY.VALOR_ALUGUEL; 
+commit;
+
+select * from dm_aluguel da 
