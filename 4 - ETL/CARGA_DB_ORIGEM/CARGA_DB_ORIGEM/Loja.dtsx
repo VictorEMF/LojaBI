@@ -1,0 +1,631 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/6/2023 5:20:09 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-7HCKLMT"
+  DTS:CreatorName="DESKTOP-7HCKLMT\victo"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{99070D32-01CE-4D5F-B62D-104CA1A3CFA1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Loja"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{0FD7374F-AD27-4773-84A0-54238C6098F8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{3E019B37-D33E-48C3-8A88-1749C65A7116}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::Caminho_completo]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=0;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1030D8CF-092B-4607-94FE-64B7F3539665}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::Pasta_processados] +   REPLACE( @[User::Nome_arquivo] , &quot;.&quot;, @[User::Data_sistema]  )"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Arquivo_processado">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\victo\OneDrive\Área de Trabalho\LojaBI\1 - ARQUIVOS\Processados\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4C9A6B30-C0B4-4551-BD41-549285B58482}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Caminho_completo">
+      <DTS:VariableValue
+        DTS:DataType="8">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EABB93ED-185F-4224-8525-2F90614E8921}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;_&quot; + (DT_WSTR,4)YEAR(GETDATE()) + RIGHT(&quot;0&quot; + (DT_WSTR,2)MONTH(GETDATE()), 2) + RIGHT(&quot;0&quot; + (DT_WSTR,2)DAY( GETDATE()), 2) + &quot;.xls&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Data_sistema">
+      <DTS:VariableValue
+        DTS:DataType="8">_20230515.xls</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3FF3CD91-DB60-4AC0-8E5F-90678DFE02CB}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="SUBSTRING(  @[User::Caminho_completo]  , FINDSTRING( @[User::Caminho_completo]  ,&quot;\\&quot;, 7 ) + 1, FINDSTRING(  @[User::Caminho_completo]   ,&quot;.&quot;, 1 ) - FINDSTRING(  @[User::Caminho_completo]   ,&quot;\\&quot;, 7 )  )"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Nome_arquivo">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9996E4EB-20D0-4FFB-BCAF-D6CC2D778B32}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Pasta_processados">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\victo\OneDrive\Área de Trabalho\LojaBI\1 - ARQUIVOS\Processados\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Contêiner do Loop Foreach"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:DelayValidation="True"
+      DTS:Description="Contêiner do Loop Foreach"
+      DTS:DTSID="{E20B2E50-70F9-4962-B62E-29546E2F6463}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contêiner do Loop Foreach">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{37B97A7F-FE1D-4176-A091-D5F8BEE7C96C}"
+        DTS:ObjectName="{37B97A7F-FE1D-4176-A091-D5F8BEE7C96C}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\victo\OneDrive\Área de Trabalho\LojaBI\1 - ARQUIVOS" />
+            <FEFEProperty
+              FileSpec="loja*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{BAB92309-7AE7-4F60-9901-A153168C536E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Fluxo de Dados"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Conversão de Dados;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Conversão de Dados"
+                  name="Conversão de Dados"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Inputs[Entrada de Conversão de Dados]"
+                      name="Entrada de Conversão de Dados">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Outputs[Saída de Conversão de Dados]"
+                      exclusionGroup="1"
+                      name="Saída de Conversão de Dados"
+                      synchronousInputId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Inputs[Entrada de Conversão de Dados]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Conversão de Dados"
+                      synchronousInputId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Inputs[Entrada de Conversão de Dados]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC"
+                  componentClassID="Microsoft.SSISODBCDst"
+                  contactInfo="Destino ODBC;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+                  description="Destino ODBC"
+                  name="Destino ODBC"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="O nome da tabela a ser procurada."
+                      expressionType="Notify"
+                      name="TableName">"public"."loja"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifique o número de linhas buscado por lote."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="O número de linhas inseridas na mesma transação."
+                      expressionType="Notify"
+                      name="TransactionSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determina a alocação de tamanho de parte de colunas LOB"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Int32"
+                      description="O número de segundos para aguardar pela execução de uma instrução SQL antes de retornar ao aplicativo."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código a ser usada quando não há informações de página de código disponíveis na fonte de dados."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="O método usado para inserir dados. Os valores possíveis são 'Linha por linha' ou 'Lote'."
+                      expressionType="Notify"
+                      name="InsertMethod">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="O tipo de dados ODBC C para associação de dados numéricos."
+                      expressionType="Notify"
+                      name="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determina como o componente associaria colunas de tipos de cadeia de caracteres (multi-)byte (ou seja, SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). As opções são: Unicode (SQL_C_WCHAR) e ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Connections[ODBCConnection]"
+                      connectionManagerID="{5B6D67FD-9FD7-4F80-A90B-19C20164F7A2}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LojaBI]"
+                      description="A conexão de tempo de execução ODBC usada para acessar o banco de dados."
+                      name="ODBCConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino do ODBC"
+                      truncationRowDisposition="FailComponent">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].Columns[id_loja]"
+                          cachedDataType="r8"
+                          cachedName="id_loja"
+                          externalMetadataColumnId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[id_loja]"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[id_loja]" />
+                        <inputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].Columns[data_abertura]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="data_abertura"
+                          externalMetadataColumnId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[data_abertura]"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[data_abertura]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[id_loja]"
+                          dataType="i4"
+                          name="id_loja" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[data_abertura]"
+                          dataType="dbTimeStamp2"
+                          name="data_abertura"
+                          scale="6" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino do ODBC"
+                      synchronousInputId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Origem do Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+                  description="Origem do Excel"
+                  name="Origem do Excel"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">loja$</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="O mapeamento de parâmetros no comando SQL para variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel]"
+                      name="Saída de Origem do Excel">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[id_loja]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[id_loja]"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[id_loja]"
+                          name="id_loja"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[data_abertura]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[data_abertura]"
+                          length="255"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[data_abertura]"
+                          name="data_abertura"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[id_loja]"
+                          dataType="r8"
+                          name="id_loja" />
+                        <externalMetadataColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[data_abertura]"
+                          dataType="wstr"
+                          length="255"
+                          name="data_abertura" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem do Excel">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[id_loja]"
+                          dataType="r8"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[id_loja]"
+                          name="id_loja" />
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[data_abertura]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[data_abertura]"
+                          name="data_abertura" />
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados.Paths[Saída de Conversão de Dados]"
+                  endId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC]"
+                  name="Saída de Conversão de Dados"
+                  startId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Outputs[Saída de Conversão de Dados]" />
+                <path
+                  refId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados.Paths[Saída de Origem do Excel]"
+                  endId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados.Inputs[Entrada de Conversão de Dados]"
+                  name="Saída de Origem do Excel"
+                  startId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel.Outputs[Saída de Origem do Excel]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contêiner do Loop Foreach\Tarefa Sistema de Arquivos"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="Tarefa Sistema de Arquivos"
+          DTS:DTSID="{9C56944E-DF75-4EDB-A8D5-1B589956B566}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Tarefa Sistema de Arquivos"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::Caminho_completo"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::Arquivo_processado"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contêiner do Loop Foreach.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{A4D43CBF-76C4-41B6-B314-9B5C668FA74D}"
+          DTS:From="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Contêiner do Loop Foreach\Tarefa Sistema de Arquivos" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{DEF04836-8C06-4DBC-969F-DD8F44D12AC0}"
+          DTS:ObjectName="{DEF04836-8C06-4DBC-969F-DD8F44D12AC0}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::Caminho_completo" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados"
+          TopLeft="69,29" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Contêiner do Loop Foreach\Tarefa Sistema de Arquivos"
+          TopLeft="58,116" />
+        <EdgeLayout
+          Id="Package\Contêiner do Loop Foreach.PrecedenceConstraints[Constraint]"
+          TopLeft="164.75,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="352,215"
+          Size="352,258"
+          Id="Package\Contêiner do Loop Foreach"
+          TopLeft="27,28" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel"
+          TopLeft="37,13" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Conversão de Dados"
+          TopLeft="23,84" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC"
+          TopLeft="43,162" />
+        <EdgeLayout
+          Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados.Paths[Saída de Origem do Excel]"
+          TopLeft="115.5,55">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados.Paths[Saída de Conversão de Dados]"
+          TopLeft="116.25,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text=""
+          ParentId="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados"
+          FontInfo="{assembly:Null}"
+          Size="29,40"
+          Id="b34de7f6-6b3e-40d5-a559-594018bbac69"
+          TopLeft="478,158" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
