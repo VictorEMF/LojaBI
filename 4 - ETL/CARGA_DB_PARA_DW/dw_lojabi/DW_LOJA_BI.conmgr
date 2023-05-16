@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DW_LOJA_BI"
+  DTS:DTSID="{0EC157A5-3518-43F7-88EC-0026C1314246}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=postgres;Dsn=dw_lojabi;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAArC0OLjdrBkeot0qoIpL4JAAAAAACAAAAAAAQZgAAAAEAACAAAAD4p86ec61yAtwqGUetSgM9+jevup8faoYtTixKifiCHQAAAAAOgAAAAAIAACAAAADPAi6l+ehvKgoN682gI405J7px8lfrTzezEEBpDZoabnAAAADlGunAbnrx8BR4FmkH3Qd7Z6MM2g/Ge3CTu73wy6ruIzo/K/sTNJgXpNAStYxJGMCzQRPBQ5lezdxtjVyMN6bHSR1Vt4lwwbi1Ek3bSRPjDI7VwGPhaGi7qqukIEBr1rEFep2ky1TmE5J4e2vUBUqoQAAAAOW7bbGxexOzZ/U/V+iVS6DWGjYX8wZkGCKBWMXbCVD4pSWp0gwUwDvHA8dHjcRCtNSH8TwcPbS9ZLgIrEvVFGM=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

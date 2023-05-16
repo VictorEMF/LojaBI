@@ -1,0 +1,472 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/7/2023 12:42:10 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-7HCKLMT"
+  DTS:CreatorName="DESKTOP-7HCKLMT\victo"
+  DTS:DTSID="{C749F2AE-4B33-4416-916D-A0D08CCF4277}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{B8E3C382-6A08-47F7-9172-0F1B1785516B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Tarefa Fluxo de Dados"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarefa Fluxo de Dados"
+      DTS:DTSID="{B053E08F-B003-4172-916F-BED7A499BEAB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarefa Fluxo de Dados"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Tarefa Fluxo de Dados\Destino ODBC"
+              componentClassID="Microsoft.SSISODBCDst"
+              description="Destino ODBC"
+              name="Destino ODBC"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="O nome da tabela a ser procurada."
+                  expressionType="Notify"
+                  name="TableName">"public"."dm_funcionario"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique o número de linhas buscado por lote."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="O número de linhas inseridas na mesma transação."
+                  expressionType="Notify"
+                  name="TransactionSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determina a alocação de tamanho de parte de colunas LOB"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="O número de segundos para aguardar pela execução de uma instrução SQL antes de retornar ao aplicativo."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código a ser usada quando não há informações de página de código disponíveis na fonte de dados."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="O método usado para inserir dados. Os valores possíveis são 'Linha por linha' ou 'Lote'."
+                  expressionType="Notify"
+                  name="InsertMethod">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="O tipo de dados ODBC C para associação de dados numéricos."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determina como o componente associaria colunas de tipos de cadeia de caracteres (multi-)byte (ou seja, SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). As opções são: Unicode (SQL_C_WCHAR) e ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Connections[ODBCConnection]"
+                  connectionManagerID="{33CD684C-B984-4F29-B9AE-6993253533C6}:invalid"
+                  connectionManagerRefId="{33CD684C-B984-4F29-B9AE-6993253533C6}:invalid"
+                  description="A conexão de tempo de execução ODBC usada para acessar o banco de dados."
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC]"
+                  errorOrTruncationOperation="Inserir"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de Destino do ODBC"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].Columns[nome_funcionario]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="nome_funcionario"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[nome_funcionario]"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[nome_funcionario]" />
+                    <inputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].Columns[cpf]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="cpf"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[cpf]"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[cpf]" />
+                    <inputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].Columns[id_cargo]"
+                      cachedDataType="i4"
+                      cachedName="id_cargo"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[sk_id_cargo]"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[id_cargo]" />
+                    <inputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].Columns[id_funcionario]"
+                      cachedDataType="i4"
+                      cachedName="id_funcionario"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[nk_id_funcionario]"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[id_funcionario]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[sk_id_funcionario]"
+                      dataType="i4"
+                      name="sk_id_funcionario" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[sk_id_cargo]"
+                      dataType="i4"
+                      name="sk_id_cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[nk_id_funcionario]"
+                      dataType="i4"
+                      name="nk_id_funcionario" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[nome_funcionario]"
+                      dataType="wstr"
+                      length="100"
+                      name="nome_funcionario" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[cpf]"
+                      dataType="wstr"
+                      length="15"
+                      name="cpf" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[dado_versao]"
+                      dataType="i4"
+                      name="dado_versao" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[data_primeiro_dado]"
+                      dataType="dbTimeStamp2"
+                      name="data_primeiro_dado"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC].ExternalColumns[data_ultimo_dado]"
+                      dataType="dbTimeStamp2"
+                      name="data_ultimo_dado"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Destino do ODBC"
+                  synchronousInputId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarefa Fluxo de Dados\Destino ODBC.Outputs[Saída de Erro de Destino do ODBC].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarefa Fluxo de Dados\Fonte ODBC"
+              componentClassID="Microsoft.SSISODBCSrc"
+              description="Fonte ODBC"
+              name="Fonte ODBC"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="O nome da tabela a ser procurada."
+                  expressionType="Notify"
+                  name="TableName">"public"."funcionario"</property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique o número de linhas buscado por lote."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determina a alocação de tamanho de parte de colunas LOB"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina como o componente expõe colunas CHAR. Se for False, colunas CHAR são expostas como cadeias de caracteres (DT_STR) de (multi-)bytes; se True, colunas CHAR são expostas como cadeias de caracteres largas (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="O número de segundos para aguardar pela execução de uma instrução SQL antes de retornar ao aplicativo."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código a ser usada quando não há informações de página de código disponíveis na fonte de dados."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="O método usado para buscar dados."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="O tipo de dados ODBC C para associação de dados numéricos."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determina como o componente associaria colunas de tipos de cadeia de caracteres (multi-)byte (ou seja, SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). As opções são: Unicode (SQL_C_WCHAR) e ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Connections[ODBCConnection]"
+                  connectionManagerID="{C955428D-2379-4293-8CE2-9E88E77E1088}:invalid"
+                  connectionManagerRefId="{C955428D-2379-4293-8CE2-9E88E77E1088}:invalid"
+                  description="A conexão de tempo de execução ODBC usada para acessar o banco de dados."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC]"
+                  errorRowDisposition="FailComponent"
+                  name="Saída de fonte ODBC"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[id_funcionario]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[id_funcionario]"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[id_funcionario]"
+                      name="id_funcionario" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[id_cargo]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[id_cargo]"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[id_cargo]"
+                      name="id_cargo" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[nome_funcionario]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[nome_funcionario]"
+                      length="100"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[nome_funcionario]"
+                      name="nome_funcionario" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[cpf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[cpf]"
+                      length="15"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].Columns[cpf]"
+                      name="cpf" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[id_funcionario]"
+                      dataType="i4"
+                      name="id_funcionario" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[id_cargo]"
+                      dataType="i4"
+                      name="id_cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[nome_funcionario]"
+                      dataType="wstr"
+                      length="100"
+                      name="nome_funcionario" />
+                    <externalMetadataColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[cpf]"
+                      dataType="wstr"
+                      length="15"
+                      name="cpf" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC]"
+                  isErrorOut="true"
+                  name="Saída de Erro de Origem do Error ODBC">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[id_funcionario]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[id_funcionario]"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[id_funcionario]"
+                      name="id_funcionario" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[id_cargo]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[id_cargo]"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[id_cargo]"
+                      name="id_cargo" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[nome_funcionario]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[nome_funcionario]"
+                      length="100"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[nome_funcionario]"
+                      name="nome_funcionario" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[cpf]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC].ExternalColumns[cpf]"
+                      length="15"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[cpf]"
+                      name="cpf" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de Erro de Origem do Error ODBC].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Tarefa Fluxo de Dados.Paths[Saída de fonte ODBC]"
+              endId="Package\Tarefa Fluxo de Dados\Destino ODBC.Inputs[Entrada de Destino do ODBC]"
+              name="Saída de fonte ODBC"
+              startId="Package\Tarefa Fluxo de Dados\Fonte ODBC.Outputs[Saída de fonte ODBC]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Tarefa Fluxo de Dados"
+          TopLeft="47,11" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Tarefa Fluxo de Dados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Tarefa Fluxo de Dados\Fonte ODBC"
+          TopLeft="42,24" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Tarefa Fluxo de Dados\Destino ODBC"
+          TopLeft="39,101" />
+        <EdgeLayout
+          Id="Package\Tarefa Fluxo de Dados.Paths[Saída de fonte ODBC]"
+          TopLeft="113.75,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarefa Fluxo de Dados\Fonte ODBC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarefa Fluxo de Dados\Destino ODBC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
