@@ -1,0 +1,39 @@
+BEGIN;
+MERGE INTO public.dm_setor ds
+USING
+	(
+		SELECT DISTINCT 
+					ID_SETOR,
+					NOME_SETOR
+		from dblink('host=localhost user=postgres password=postgres dbname=lojabi',
+		$$
+			SELECT 	
+					ID_SETOR,
+					NOME_SETOR
+		FROM setor
+		$$) AS produto
+					(ID_SETOR INT,
+					NOME_SETOR VARCHAR(50))
+		ORDER BY 1
+	) MERGE_SUBQUERY
+ON (
+		ds.NK_ID_SETOR = MERGE_SUBQUERY.ID_SETOR
+	)
+WHEN NOT MATCHED THEN 
+
+INSERT 
+		(
+			NK_ID_SETOR,
+			NOME_SETOR
+		)
+VALUES 
+		(
+			MERGE_SUBQUERY.ID_SETOR,
+			MERGE_SUBQUERY.NOME_SETOR
+		)
+WHEN MATCHED THEN 
+
+UPDATE SET 
+			NK_ID_SETOR 	=	MERGE_SUBQUERY.ID_SETOR,
+			NOME_SETOR		=	MERGE_SUBQUERY.NOME_SETOR;
+COMMIT;
