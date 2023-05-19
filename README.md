@@ -19,6 +19,11 @@ jOBS e o Agendamento :
 Após o trabalho da equipe de BI ser finalizado o DASHBOARD foi finalizado e o CEO pode ter uma idea melhor e esse foi o resulto da equipe.
 
 Tela Principal:
-Ela possui um resumo variado sobre a empresa
+Ela possui um resumo variado sobre a empresa, desde lucro ate qual funcionario vende mais.
 
 ![Tela Principal](https://github.com/VictorEMF/LojaBI/assets/70483515/429c47c2-0999-464c-877f-e9e912816596)
+
+Tela de Lojas:
+Ela detalha melhor quanto cada loja esta tendo de lucro junto com qual produto é, qual loja vende mais, se as vendas são por APP ou Presenciais.
+
+![Tela de Lojas](https://github.com/VictorEMF/LojaBI/assets/70483515/33b61f09-e80d-491b-b566-3431e3b90e84)
