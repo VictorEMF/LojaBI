@@ -15,3 +15,10 @@ com isso houve toda a criação do ETL que foi feito no SQL Server Integration S
 jOBS e o Agendamento :
 
 ![jobs_agendamento](https://github.com/VictorEMF/LojaBI/assets/70483515/c9cf3a60-b43c-4490-9d68-b58988766f1c)
+
+Após o trabalho da equipe de BI ser finalizado o DASHBOARD foi finalizado e o CEO pode ter uma idea melhor e esse foi o resulto da equipe.
+
+Tela Principal:
+Ela possui um resumo variado sobre a empresa
+
+![Tela Principal](https://github.com/VictorEMF/LojaBI/assets/70483515/429c47c2-0999-464c-877f-e9e912816596)
