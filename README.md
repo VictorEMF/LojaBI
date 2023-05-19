@@ -27,3 +27,8 @@ Tela de Lojas:
 Ela detalha melhor quanto cada loja esta tendo de lucro junto com qual produto é, qual loja vende mais, se as vendas são por APP ou Presenciais.
 
 ![Tela de Lojas](https://github.com/VictorEMF/LojaBI/assets/70483515/33b61f09-e80d-491b-b566-3431e3b90e84)
+
+Tela de Financeiro Mensal:
+Serve para mostrar o salario dos cargos e o total deles, junto com isso tem o lucro bruto e líquido de cada loja, dividida por mês e ano
+
+![Tela de Financeiro](https://github.com/VictorEMF/LojaBI/assets/70483515/8a340d60-51b0-4e7e-aa1b-98627ff52377)
