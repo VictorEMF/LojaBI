@@ -35,4 +35,4 @@ Serve para mostrar o salario dos cargos e o total deles, junto com isso tem o lu
 
 Organização do Projeto:
 
-![Organização](https://github.com/VictorEMF/LojaBI/assets/70483515/bf7e5ae7-b395-42e4-8947-a29386139aba
+![Organização](https://github.com/VictorEMF/LojaBI/assets/70483515/bf7e5ae7-b395-42e4-8947-a29386139aba)
