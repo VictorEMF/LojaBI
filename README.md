@@ -32,3 +32,7 @@ Tela de Financeiro Mensal:
 Serve para mostrar o salario dos cargos e o total deles, junto com isso tem o lucro bruto e líquido de cada loja, dividida por mês e ano
 
 ![Tela de Financeiro](https://github.com/VictorEMF/LojaBI/assets/70483515/8a340d60-51b0-4e7e-aa1b-98627ff52377)
+
+Organização do Projeto:
+
+![Organização](https://github.com/VictorEMF/LojaBI/assets/70483515/bf7e5ae7-b395-42e4-8947-a29386139aba
