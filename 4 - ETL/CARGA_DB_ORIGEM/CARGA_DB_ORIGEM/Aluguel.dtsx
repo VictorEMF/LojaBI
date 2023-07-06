@@ -12,8 +12,8 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Aluguel"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{9B3C0A3E-860F-4C74-B35B-DBDA302722EE}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{E50AC46C-DC9F-413D-A51F-0EFF32A2DA70}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -62,7 +62,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Data_sistema">
       <DTS:VariableValue
-        DTS:DataType="8">_20230515.xls</DTS:VariableValue>
+        DTS:DataType="8">_20230602.xls</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -516,25 +516,25 @@
         <NodeLayout
           Size="160,42"
           Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Origem do Excel"
-          TopLeft="50,16" />
+          TopLeft="50,17" />
         <NodeLayout
           Size="151,42"
           Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados\Destino ODBC"
           TopLeft="59,113" />
         <EdgeLayout
           Id="Package\Contêiner do Loop Foreach\Tarefa Fluxo de Dados.Paths[Saída de Origem do Excel]"
-          TopLeft="132.25,58">
+          TopLeft="132.25,59">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="0,54"
               Start="0,0"
-              End="0,47.5">
+              End="0,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
