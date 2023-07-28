@@ -5,7 +5,7 @@ Uma empresa possui varias lojas e eles começaram a crescer então decidiram atu
 ![modelo_transacional](https://github.com/VictorEMF/LojaBI/assets/70483515/7c07c66b-3c3c-4fa2-a5e6-5f6f464870e7)
 
 Logo após isso houve a criação do modelo multidimensional e a criação do DATA WAREHOUSE (DW).
-O esquema que foi adotado nele foi o Snow Flake, já que os Stakeholders queria que todas as tabelas estivesse no DW. 
+O esquema que foi adotado para o modelo foi o Snow Flake, já que os Stakeholders queriam que todas as tabelas estivesse no DW. 
 
 ![modelo_multidimensional](https://github.com/VictorEMF/LojaBI/assets/70483515/acb356bb-a1c7-4f48-b68d-2f523fa61c16)
 
